@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, .font-retro-title {
+    font-family: 'Press Start 2P', monospace;
+    letter-spacing: -0.05em;
+  }
+}
+
+/* Custom 16-Bit Pixel Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e0b18;
+  border-left: 2px solid #2c234d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #473b75;
+  border: 2px solid #0e0b18;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7462bc;
+}
+
+/* CRT Scanline Overlay Effect */
+.scanlines-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 26, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+/* CRT Screen Curve & Flicker */
+.crt-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-effect::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+  z-index: 999;
+  background-size: 100% 3px, 4px 100%;
+  pointer-events: none;
+}
+
+/* 16-Bit Pixel Border Utility */
+.pixel-box {
+  border-style: solid;
+  border-width: 3px;
+  border-image-slice: 3;
+}
+
+/* Themes Overrides */
+[data-theme="gameboy-retro"] {
+  --bg-primary: #8bac0f;
+  --bg-secondary: #9bbc0f;
+  --text-primary: #0f380f;
+  --text-muted: #306230;
+  --accent-color: #306230;
+  filter: contrast(110%) sepia(20%) hue-rotate(40deg);
+}
+
+[data-theme="cyberpunk-neon"] {
+  --bg-primary: #0a0518;
+  --bg-secondary: #140b2e;
+  --accent-color: #06b6d4;
+}
+
+[data-theme="molten-forge"] {
+  --bg-primary: #120907;
+  --bg-secondary: #24110e;
+  --accent-color: #f97316;
+}

@@ -1,0 +1,29 @@
+{
+  "name": "life-rpg",
+  "version": "1.0.0",
+  "description": "Life RPG - Turn mundane real-world tasks into a virtual 16-bit retro RPG progression system.",
+  "scripts": {
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "start": "npm run start --prefix server",
+    "build": "npm run build --prefix client",
+    "seed": "npm run seed --prefix server",
+    "test": "npm run test --prefix server",
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client"
+  },
+  "keywords": [
+    "life-rpg",
+    "gamification",
+    "productivity",
+    "rpg",
+    "habits",
+    "todo",
+    "react",
+    "express",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
