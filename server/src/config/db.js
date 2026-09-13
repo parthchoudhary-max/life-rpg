@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 let mongodInstance = null;
 
 const connectDB = async () => {
+  if (mongoose.connection.readyState >= 1) {
+    return;
+  }
   const uri = process.env.MONGODB_URI;
   const useInMemory = process.env.USE_IN_MEMORY_DB === 'true';
 
